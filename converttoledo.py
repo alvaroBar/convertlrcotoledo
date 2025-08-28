@@ -194,7 +194,7 @@ if not st.session_state.df_processado.empty:
     st.markdown("---")
     st.subheader("Passo 3: Envie os Dados")
     
-    if not df_para_envio.empty:
+     if not df_para_envio.empty:
         st.write(f"**{len(df_para_envio)}** registros prontos para serem enviados. Pré-visualização:")
         st.dataframe(df_para_envio.head())
 
@@ -206,6 +206,8 @@ if not st.session_state.df_processado.empty:
                     st.balloons()
                     # Limpa o estado para um novo processamento
                     st.session_state.df_processado = pd.DataFrame()
+                    # Força a reinicialização do app para a tela inicial
+                    st.rerun()
                 else:
                     st.error("Falha no envio dos dados. Verifique a mensagem de erro acima.")
     else:
